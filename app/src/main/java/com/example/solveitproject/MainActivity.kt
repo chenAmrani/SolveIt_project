@@ -1,45 +1,26 @@
 package com.example.solveitproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("DEMO3" , "onCreate")
-    }
 
-    override fun onStart() {
-        super.onStart()
-
-        Log.d("DEMO3" , "onStart")
+        val registerStudentButton = findViewById<Button>(R.id.BtnRegisterStudent)
+        registerStudentButton.setOnClickListener(::onRegisterStudentButton)
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        Log.d("DEMO3" , "onResume")
+    fun onRegisterStudentButton(view: View){
+        val intent = Intent(this, RegisterStudentActivity::class.java)
+        startActivity(intent)
     }
 
-    override fun onPause() {
-        super.onPause()
-
-        Log.d("DEMO3" , "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        Log.d("DEMO3" , "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        Log.d("DEMO3" , "onDestroy")
-    }
 }
