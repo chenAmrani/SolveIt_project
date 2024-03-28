@@ -42,7 +42,7 @@ class RegisterFragment : Fragment() {
 
 
         cancelButton?.setOnClickListener{
-//            finish()  //TODO define later
+            Navigation.findNavController(it).popBackStack()
         }
 
         saveButton?.setOnClickListener{
