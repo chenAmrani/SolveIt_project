@@ -18,7 +18,8 @@ class LogInFragment : Fragment() {
     private var emailTextField: EditText? = null
     private var passwordTextField: EditText? = null
     private var signInButton: Button? = null
-    private var registerButton: Button? = null
+   private var registerButton: Button? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +28,6 @@ class LogInFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
         setupUI(view)
-        Log.i("tag","Loading the page problem")
         return view
     }
 
@@ -35,9 +35,13 @@ class LogInFragment : Fragment() {
         emailTextField = view.findViewById(R.id.emailTextField)
         passwordTextField = view.findViewById(R.id.passwordTextField)
         signInButton = view.findViewById(R.id.BtnSignIn)
-        registerButton = view.findViewById(R.id.BtnRegisterLogInFragment)
-        val action = Navigation.createNavigateOnClickListener(R.id.action_logInFragment2_to_registerFragment)
-        registerButton?.setOnClickListener (action)
+        registerButton= view.findViewById(R.id.BtnRegisterLogInFragment)
+
+
+        registerButton?.setOnClickListener{
+           Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_registerFragment)
+            Log.i("demo1","hi")
+        }
 
         signInButton?.setOnClickListener{
             val email = emailTextField?.text.toString().trim()
@@ -52,6 +56,10 @@ class LogInFragment : Fragment() {
 //                user.delete()
             }
         }
+
+
+
+
     }
 }
 
