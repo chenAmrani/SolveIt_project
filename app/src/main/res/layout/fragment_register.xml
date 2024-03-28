@@ -8,8 +8,9 @@
 
     <EditText
         android:id="@+id/nameTextField"
+        android:hint="Enter your name"
         android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginStart="34dp"
         android:layout_marginEnd="168dp"
         android:ems="10"
@@ -23,8 +24,9 @@
 
     <EditText
         android:id="@+id/idTextField"
+        android:hint="Enter your id"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
@@ -38,8 +40,9 @@
 
     <EditText
         android:id="@+id/emailTextField"
+        android:hint="Enter your Email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
@@ -53,8 +56,9 @@
 
     <EditText
         android:id="@+id/passwordTextField"
+        android:hint="Enter your password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="22dp"
         android:ems="10"
         android:inputType="textPassword"
@@ -72,7 +76,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="112dp"
-        android:text="Done"
+        android:text="@string/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BtnRegisterCancel"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="168dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintBaseline_toBaselineOf="@+id/BtnRegisterDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/BtnRegisterDone" />
@@ -94,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="29dp"
-        android:text="Uploud Profile Image"
+        android:text="@string/uploud_profile_image"
         app:layout_constraintBottom_toTopOf="@+id/BtnRegisterDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
@@ -106,7 +110,7 @@
         android:id="@+id/RegisterHeader1"
         android:layout_width="188dp"
         android:layout_height="55dp"
-        android:text="Register"
+        android:text="@string/register"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:text="Its fast and easy"
+        android:text="@string/its_fast_and_easy"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +134,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
@@ -140,7 +144,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -153,7 +157,7 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
@@ -166,7 +170,7 @@
         app:layout_constraintVertical_bias="0.818" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -175,11 +179,10 @@
         app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextField" />
-
     <ImageButton
         android:id="@+id/BtnUploadImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="18dp"
         android:scrollbarSize="1dp"
@@ -189,6 +192,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextField"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/stat_sys_upload" />
+        app:srcCompat="@android:drawable/stat_sys_upload"
+        android:contentDescription="Upload Image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
