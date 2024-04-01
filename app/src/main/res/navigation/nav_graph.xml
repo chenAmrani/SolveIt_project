@@ -19,4 +19,14 @@
         android:name="com.example.solveitproject.Modules.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/addPostFragment"
+        android:name="com.example.solveitproject.Modules.AddPostFragment"
+        android:label="fragment_add_post"
+        tools:layout="@layout/fragment_add_post" /><action android:id="@+id/action_global_addPostFragment" app:destination="@id/addPostFragment"/>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.solveitproject.Modules.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" />
 </navigation>
