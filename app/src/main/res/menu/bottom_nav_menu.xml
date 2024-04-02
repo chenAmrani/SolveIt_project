@@ -3,18 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/homePageFragment"
         android:icon="@android:drawable/ic_dialog_dialer"
         android:title="Home Page" />
 
 
     <item
+        android:id="@+id/addPostFragment"
         android:icon="@android:drawable/ic_dialog_dialer"
-        android:title="Add Student" />
+        android:title="Add Post" />
 
 
     <item
         android:icon="@android:drawable/presence_invisible"
-        android:title="INFO" />
+        android:title="Profile" />
 
 
 </menu>

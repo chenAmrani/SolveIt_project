@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -35,14 +36,21 @@ class MainActivity : AppCompatActivity() {
         navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
     }
 
+    private var isAddMenuItemVisible = true
+
 
     //    private var isAddMenuItemVisible = true
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu, menu)
-//        val addMenuItem = menu?.findItem(R.id.addPersonPostFragment)
-//        addMenuItem?.isVisible = isAddMenuItemVisible
+        val addMenuItem = menu?.findItem(R.id.menuItemActionBarAddStudent)
+        addMenuItem?.isVisible = isAddMenuItemVisible
         return true
+    }
+
+    fun setAddMenuItemVisibility(isVisible: Boolean) {
+        isAddMenuItemVisible = isVisible
+        invalidateOptionsMenu()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -51,7 +59,22 @@ class MainActivity : AppCompatActivity() {
                 navController?.navigateUp()
                 true
             }
+            R.id.menuItemActionBarAddStudent -> {
+                navController?.navigate(R.id.action_global_addPostFragment)
+                true
+            }
+
             else -> NavigationUI.onNavDestinationSelected(item, navController!!)
+        }
+    }
+
+    fun setBottomBarVisibility(isVisible: Boolean) {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
+
+        if (isVisible) {
+            bottomNavigationView.visibility = View.VISIBLE
+        } else {
+            bottomNavigationView.visibility = View.GONE
         }
     }
 
