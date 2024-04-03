@@ -10,7 +10,10 @@ import com.example.solveitproject.base.MyApplication
 @Entity
 data class Post(
     @PrimaryKey val postid: String,
+    val curseName:String,
+    val topicName:String,
     val publisher: String?, //id of the person who posted
+//    val additionalText:String,
     val imageUrl : String? = null,
     var lastUpdated: Long? = null
 ) {
@@ -30,16 +33,21 @@ data class Post(
             }
 
         const val id_KEY = "postid"
+        const val CURSE_NAME_KEY = "curseName"
+        const val TOPIC_NAME_KEY = "topicName"
         const val PUBLISHER_KEY = "postpublisher"
         const val IMAGE_KEY = "postimage"
         const val LAST_UPDATED = "lastUpdated"
         const val GET_LAST_UPDATED = "get_last_updated"
 
+
         fun fromJSON(json: Map<String, Any>): Post {
             val postid = json[id_KEY] as? String ?: ""
+            val curseName= json[CURSE_NAME_KEY] as? String ?: ""
+            val topicName = json[TOPIC_NAME_KEY] as? String ?: ""
             val publisher = json[PUBLISHER_KEY] as? String ?: ""
             // val image = json[IMAGE_KEY] as? String ?: ""
-            val post = Post(postid, publisher)
+            val post = Post(postid, curseName, topicName, publisher)
 //            val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
 //            timestamp?.let {
 //                post.lastUpdated = it.seconds

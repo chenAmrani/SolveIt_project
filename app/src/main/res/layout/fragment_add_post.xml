@@ -15,12 +15,12 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
-        android:id="@+id/editTextTextCourseName"
+        android:id="@+id/CurseTextField"
+        android:hint="Name of Curse"
         android:layout_width="286dp"
         android:layout_height="49dp"
         android:ems="10"
         android:inputType="text"
-        android:text="The Name Of The Course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.497"
@@ -29,49 +29,49 @@
         app:layout_constraintVertical_bias="0.202" />
 
     <EditText
-        android:id="@+id/editTextTextTopicName"
+        android:id="@+id/TopicTextField"
+        android:hint="Topic"
         android:layout_width="286dp"
         android:layout_height="54dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Topic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextCourseName"
+        app:layout_constraintTop_toBottomOf="@+id/CurseTextField"
         app:layout_constraintVertical_bias="0.068" />
 
     <EditText
-        android:id="@+id/editTextTextTakenfrom"
+        android:id="@+id/TakenFromTextField"
+        android:hint="Taken from"
         android:layout_width="286dp"
         android:layout_height="56dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Taken from"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextTopicName"
+        app:layout_constraintTop_toBottomOf="@+id/TopicTextField"
         app:layout_constraintVertical_bias="0.1" />
 
     <EditText
-        android:id="@+id/editTextTextFirstNameAndLastName"
+        android:id="@+id/FirstNameLastNameTextField"
+        android:hint="First name and last name"
         android:layout_width="286dp"
         android:layout_height="55dp"
         android:ems="10"
         android:inputType="text"
-        android:text="First name and last name"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextTakenfrom"
+        app:layout_constraintTop_toBottomOf="@+id/TakenFromTextField"
         app:layout_constraintVertical_bias="0.14" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/AdditionalTextField"
         android:layout_width="300dp"
         android:layout_height="128dp"
         android:ems="10"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextFirstNameAndLastName"
+        app:layout_constraintTop_toBottomOf="@+id/FirstNameLastNameTextField"
         app:layout_constraintVertical_bias="0.41" />
 
     <TextView
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:text="Additional description"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/AdditionalTextField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.702"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.712"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/AdditionalTextField"
         app:layout_constraintVertical_bias="0.517" />
 
     <Button

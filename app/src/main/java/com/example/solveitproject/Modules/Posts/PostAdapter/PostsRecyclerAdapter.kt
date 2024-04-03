@@ -9,7 +9,6 @@ import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Modules.Posts.PostsRecyclerViewActivity
 import com.example.solveitproject.R
 
-class PostsRecyclerAdapter {
 
     class PostsRecyclerAdapter(var posts: List<StudentPost>?): RecyclerView.Adapter<PostViewHolder>() {
 
@@ -24,8 +23,7 @@ class PostsRecyclerAdapter {
 
         override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
             val post = posts?.get(position)
-            holder.bind(post)
+//            holder.bind(post)
         }
     }
 
-}

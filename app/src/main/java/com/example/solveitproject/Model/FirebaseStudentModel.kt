@@ -9,6 +9,7 @@ class FirebaseStudentModel {
 
     private val firestore = FirebaseFirestore.getInstance()
     private val collection = firestore.collection("users") // Adjust "users" to your Firestore collection name
+
     companion object {
         const val STUDENTS_COLLECTION_PATH = "students"
     }
