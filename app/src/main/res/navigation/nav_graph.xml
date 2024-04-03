@@ -29,4 +29,8 @@
         android:name="com.example.solveitproject.Modules.HomePageFragment"
         android:label="SolveIt"
         tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/allPostsFragment"
+        android:name="com.example.solveitproject.Modules.AllPostsFragment.AllPostsFragment"
+        android:label="AllPostsFragment" />
 </navigation>

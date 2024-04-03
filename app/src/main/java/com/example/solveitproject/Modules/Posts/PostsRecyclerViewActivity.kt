@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Modules.Posts.PostAdapter.PostsRecyclerAdapter
 
+
 class PostsRecyclerViewActivity : AppCompatActivity() {
 
 
@@ -17,17 +18,17 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
         var adapter: PostsRecyclerAdapter? = null
 
 
-        private lateinit var binding: ActivityPostRcyclerViewBinding
+//        private lateinit var binding: ActivityPostRcyclerViewBinding
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
-            binding = ActivityPostRcyclerViewBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+//            binding = ActivityPostRcyclerViewBinding.inflate(layoutInflater)
+//            setContentView(binding.root)
 
 
 
-            PostsRcyclerView = binding.rvGeneralPostRecyclerList
+//            PostsRcyclerView = binding.rvGeneralPostRecyclerList
             PostsRcyclerView?.setHasFixedSize(true)
             PostsRcyclerView?.layoutManager = LinearLayoutManager(this)
 
@@ -38,8 +39,9 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
                     Log.i("TAG", "PostsRecyclerAdapter: Position clicked $position")
                 }
 
-                override fun onPostClicked(studentpost:StudentPost?) {
-                    Log.i("TAG", "POST $studentpost")
+                override fun onPostClicked(studentpost: StudentPost?) {
+                    // Implement the logic here
+                    Log.i("TAG", "General Post Clicked: $studentpost")
                 }
             }
 
@@ -48,7 +50,7 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
 
         interface OnItemClickListener {
             fun onItemClick(position: Int) // General Post
-            fun onGeneralPostClicked(studentpost: StudentPost?)
+            fun onPostClicked(studentpost: StudentPost?)
         }
 
         override fun onResume() {

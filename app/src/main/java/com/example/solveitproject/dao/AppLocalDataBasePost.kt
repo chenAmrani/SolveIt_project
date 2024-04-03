@@ -3,14 +3,16 @@ package com.example.solveitproject.dao
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.solveitproject.Model.Post
 import com.example.solveitproject.Model.Student
 import com.example.solveitproject.base.MyApplication
 
 
-@Database(entities = [Student::class], version = 1)
+@Database(entities = [Post::class], version = 1)
   abstract class AppLocalDbRepository : RoomDatabase() {
       abstract fun PostDao(): PostDao
   }
+
 
 object AppLocalDataBasePost {
 val db: AppLocalDbRepository by lazy {
@@ -21,7 +23,7 @@ val db: AppLocalDbRepository by lazy {
     Room.databaseBuilder(
         context,
         AppLocalDbRepository::class.java,
-        "postFileName.db"
+        "PostFileName.db"
     )
         .fallbackToDestructiveMigration()
         .build()

@@ -36,11 +36,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation ("com.google.firebase:firebase-storage-ktx:20.3.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")

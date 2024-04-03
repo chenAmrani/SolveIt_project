@@ -30,25 +30,25 @@ import com.example.solveitproject.Modules.Posts.PostsRecyclerViewActivity
                 Log.i("TAG", "GeneralPostViewHolder: Position clicked $adapterPosition")
 
                 listener?.onItemClick(adapterPosition)
-                listener?.onGeneralPostClicked(post)
+                listener?.onPostClicked(post)
             }
         }
 
-        fun bind(post: StudentPost?) {
-            this.post = post
-//            requestTextView?.text = post?.request
-//            offerTextView?.text = post?.offer
-//            contactTextView?.text = post?.contact
-//            idTextView?.text = post?.postid
-            val imageUrl = post?.image
-            if (!imageUrl.isNullOrEmpty()) {
-                Picasso.get().load(imageUrl)
-                    .resize(400, 400)
-                    .centerCrop()
-                    .into(imageImageView)
-            }
-        }
-    }
+//        fun bind(post: StudentPost?) {
+//            this.post = post
+////            requestTextView?.text = post?.request
+////            offerTextView?.text = post?.offer
+////            contactTextView?.text = post?.contact
+////            idTextView?.text = post?.postid
+//            val imageUrl = post?.image
+//            if (!imageUrl.isNullOrEmpty()) {
+//                Picasso.get().load(imageUrl)
+//                    .resize(400, 400)
+//                    .centerCrop()
+//                    .into(imageImageView)
+//            }
+//        }
+//    }
 
 
 }
