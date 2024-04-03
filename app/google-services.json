@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "209513629377",
+    "project_id": "solveit-1ceba",
+    "storage_bucket": "solveit-1ceba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209513629377:android:38d0c3b002cf1aa042b640",
+        "android_client_info": {
+          "package_name": "com.example.solveitproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-jWZ3aCmAR0ozI8fgZNI38XdYv13ucek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
