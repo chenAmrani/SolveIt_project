@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.core.os.HandlerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.solveitproject.Model.FirebasePostModel
+import com.example.solveitproject.Model.FirebaseStudentPostModel
 import com.example.solveitproject.Model.Post
 import com.example.solveitproject.dao.AppLocalDataBasePost
 import java.util.concurrent.Executors
@@ -55,10 +57,10 @@ class PostModel private constructor() {
                     database.PostDao().insert(Post)
                     Log.i("TAG", "PostDao(): ${database.PostDao().getAll().value.toString()}")
 
-//                    Post.lastUpdated?.let {
-//                        if (time < it)
-//                            time = Post.lastUpdated ?: System.currentTimeMillis()
-//                    }
+                    Post.lastUpdated?.let {
+                        if (time < it)
+                            time = Post.lastUpdated ?: System.currentTimeMillis()
+                    }
                 }
 
                 // 4. Update local data
@@ -69,14 +71,14 @@ class PostModel private constructor() {
     }
 
     fun addPost(post: Post, callback: () -> Unit) {
-        FirebasePostModel.addPost(Post) {
-//            FirebaseStudentPostModel()
+        FirebasePostModel.addPost(post) {
+           FirebaseStudentPostModel()
             callback()
         }
     }
     fun getPostById(id: String, callback: (Post?) -> Unit) : LiveData<Post>{
         FirebasePostModel.getPostById(id) {
-//            callback(it)
+            callback(it)
         }
         return database.PostDao().getPostById(id)
     }

@@ -3,9 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs")
     id("kotlin-kapt")
-//    id ("com.google.gms.google-services")
-
-
+    id ("com.google.gms.google-services")
 }
 
 android {
@@ -69,14 +67,14 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-//    // Firebase BOM
-//    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    // Firebase BOM
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+
+// Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics")
 //
-//// Firebase Analytics
-//    implementation("com.google.firebase:firebase-analytics")
-//
-//// Firebase Firestore
-//    implementation("com.google.firebase:firebase-firestore")
+// Firebase Firestore
+    implementation("com.google.firebase:firebase-firestore")
 //
 //// Firebase Realtime Database
 //    implementation("com.google.firebase:firebase-database:20.3.1")

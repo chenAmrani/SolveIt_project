@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.core.os.HandlerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.solveitproject.Model.FirebaseStudentPostModel
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.dao.AppLocalDataBaseStudentPost
 import java.util.concurrent.Executors
@@ -88,7 +89,7 @@ class StudentPostModel private constructor() {
     }
 
     fun updateStudentPost(studentPost: StudentPost, callback: () -> Unit) {
-        FirebaseStudentPostModel.updateStudnetPost(studentPost) {
+        FirebaseStudentPostModel.updateStudentPost(studentPost) {
             executor2.execute {
                 database.StudentPostDao().updateStudentPost(studentPost)
             }
@@ -97,7 +98,7 @@ class StudentPostModel private constructor() {
     }
 
     fun deleteStudentPost(studentPost: StudentPost, callback: () -> Unit) {
-        FirebaseStudentPostModel.deleteStudnetPost(studentPost.postid) {
+        FirebaseStudentPostModel.deleteStudentPost(studentPost.postid) {
             executor3.execute {
                 database.StudentPostDao().delete(studentPost)
             }

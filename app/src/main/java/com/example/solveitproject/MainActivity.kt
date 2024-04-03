@@ -2,6 +2,7 @@ package com.example.solveitproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -10,6 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private var navController: NavController? = null
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment?.navController
 
         navController?.let { NavigationUI.setupActionBarWithNavController(this, it) }
+
 
 
         val bottomNavigationView: BottomNavigationView =

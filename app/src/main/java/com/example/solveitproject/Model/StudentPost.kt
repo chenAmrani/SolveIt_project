@@ -5,9 +5,8 @@ import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.solveitproject.base.MyApplication
+import java.security.Timestamp
 
-//import com.google.firebase.Timestamp
-//import com.google.firebase.firestore.FieldValue
 
     @Entity
     data class StudentPost(
@@ -51,7 +50,7 @@ import com.example.solveitproject.base.MyApplication
 
 //                val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
 //                timestamp?.let {
-//                    studntonPost.lastUpdated = it.seconds
+//                    studentPost.lastUpdated = it.seconds
 //                }
 
                 return studentPost
