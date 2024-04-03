@@ -11,7 +11,7 @@ import com.example.solveitproject.R
 
 class PostsRecyclerAdapter {
 
-    class GeneralPostsRecyclerAdapter(var posts: List<StudentPost>?): RecyclerView.Adapter<PostViewHolder>() {
+    class PostsRecyclerAdapter(var posts: List<StudentPost>?): RecyclerView.Adapter<PostViewHolder>() {
 
         var listener: PostsRecyclerViewActivity.OnItemClickListener? = null
 

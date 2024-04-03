@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.example.solveitproject.Modules.LogInFragment"
-        android:label="Log In"
+        android:label="SolveIt"
         tools:layout="@layout/fragment_log_in">
         <action
             android:id="@+id/action_logInFragment_to_registerFragment"
@@ -17,16 +17,16 @@
     <fragment
         android:id="@+id/RegisterFragment"
         android:name="com.example.solveitproject.Modules.RegisterFragment"
-        android:label="Register"
+        android:label="SolveIt"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/addPostFragment"
         android:name="com.example.solveitproject.Modules.AddPostFragment"
-        android:label="fragment_add_post"
+        android:label="SolveIt"
         tools:layout="@layout/fragment_add_post" /><action android:id="@+id/action_global_addPostFragment" app:destination="@id/addPostFragment"/>
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.solveitproject.Modules.HomePageFragment"
-        android:label="fragment_home_page"
+        android:label="SolveIt"
         tools:layout="@layout/fragment_home_page" />
 </navigation>
