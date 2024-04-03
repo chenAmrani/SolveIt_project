@@ -21,7 +21,7 @@ val db: AppLocalDbRepository by lazy {
     Room.databaseBuilder(
         context,
         AppLocalDbRepository::class.java,
-        "dbFileName.db"
+        "postFileName.db"
     )
         .fallbackToDestructiveMigration()
         .build()
