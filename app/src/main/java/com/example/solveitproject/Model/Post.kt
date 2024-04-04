@@ -13,8 +13,7 @@ data class Post(
     val curseName:String,
     val topicName:String,
     val publisher: String?, //id of the person who posted
-//    val additionalText:String,
-    val imageUrl : String? = null,
+     val imageUrl : String? = null,
     var lastUpdated: Long? = null
 ) {
 

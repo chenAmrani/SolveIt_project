@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.solveitproject.dao.AppLocalDataBaseStudent
 import java.util.concurrent.Executors
 
-class StudentModel {
+
     class StudentModel private constructor() {
         enum class LoadingState {
             LOADING,
@@ -53,4 +53,3 @@ class StudentModel {
             }
         }
     }
-}
