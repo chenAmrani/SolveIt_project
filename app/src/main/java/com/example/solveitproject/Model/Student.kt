@@ -7,11 +7,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Student(
-    @PrimaryKey val name: String,
+    val name: String,
     @PrimaryKey val email: String,
     val id: String,
-    val avatarUrl: String,
-
+    val avatarUrl: String
 )
 {
 
@@ -47,3 +46,4 @@ val json: Map<String, Any>
             )
     }
 }
+
