@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.solveitproject.Model.Student
+import com.example.solveitproject.Model.StudentModel
 
 
 class RegisterFragment : Fragment() {
@@ -59,6 +61,8 @@ class RegisterFragment : Fragment() {
                 ).show()
 //                user.delete()
             }
+
+//
 
         }
 

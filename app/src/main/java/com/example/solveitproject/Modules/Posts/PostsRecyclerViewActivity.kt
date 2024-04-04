@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Modules.Posts.PostAdapter.PostsRecyclerAdapter
+import com.example.solveitproject.databinding.ActivityPostRecyclerViewBinding
 
 
 class PostsRecyclerViewActivity : AppCompatActivity() {
@@ -18,17 +19,17 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
         var adapter: PostsRecyclerAdapter? = null
 
 
-//        private lateinit var binding: ActivityPostRcyclerViewBinding
+        private lateinit var binding: ActivityPostRecyclerViewBinding
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
-//            binding = ActivityPostRcyclerViewBinding.inflate(layoutInflater)
-//            setContentView(binding.root)
+            binding = ActivityPostRecyclerViewBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
 
 
-//            PostsRcyclerView = binding.rvGeneralPostRecyclerList
+            PostsRcyclerView = binding.rvGeneralPostRecyclerList
             PostsRcyclerView?.setHasFixedSize(true)
             PostsRcyclerView?.layoutManager = LinearLayoutManager(this)
 
