@@ -10,7 +10,8 @@ data class Student(
     val name: String,
     @PrimaryKey val email: String,
     val id: String,
-    val avatarUrl: String
+    val image: String
+
 )
 {
 
@@ -30,7 +31,7 @@ companion object {
         val name = json[NAME_KEY] as? String ?: ""
         val email = json[EMAIL_KEY] as? String ?: ""
         val image = json[StudentPost.IMAGE_KEY] as? String ?: ""
-        val student = Student(name, id, email,image)
+        val student = Student(name, id, email, image)
 
         return student
     }
@@ -43,6 +44,7 @@ val json: Map<String, Any>
             ID_KEY to id,
             NAME_KEY to name,
             EMAIL_KEY to email,
+            IMAGE_KEY to image,
             )
     }
 }

@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.menuItemActionBarAddStudent -> {
-                navController?.navigate(R.id.action_global_addPostFragment)
+                navController?.navigate(R.id.action_logInFragment_to_addStudentPostFragment)
                 true
             }
 
