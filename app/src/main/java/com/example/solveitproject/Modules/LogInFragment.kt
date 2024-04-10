@@ -1,5 +1,7 @@
 package com.example.solveitproject.Modules
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +11,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.solveitproject.MainActivity
 import com.example.solveitproject.R
+import com.google.firebase.auth.FirebaseAuth
 
 
 class LogInFragment : Fragment() {
 
-    private var emailTextField: EditText? = null
-    private var passwordTextField: EditText? = null
-    private var signInButton: Button? = null
-    private  var registerButton: Button? = null
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var auth: FirebaseAuth
+    private lateinit var emailTextField: EditText
+    private lateinit var passwordTextField: EditText
+    private lateinit var signInButton: Button
+    private lateinit var registerButton: Button
 
 
     override fun onCreateView(
@@ -25,41 +31,79 @@ class LogInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
-        setupUI(view)
-        return view
-    }
 
-    private fun setupUI(view : View) {
-        emailTextField = view.findViewById(R.id.emailTextField)
-        passwordTextField = view.findViewById(R.id.passwordTextField)
+        emailTextField = view.findViewById(R.id.SignInTextEmailAddress)
+        passwordTextField = view.findViewById(R.id.SignInTextPassword)
         signInButton = view.findViewById(R.id.BtnSignIn)
         registerButton = view.findViewById(R.id.ButtonRegister)
 
-
-        registerButton?.setOnClickListener{
+        registerButton.setOnClickListener{
             val action = LogInFragmentDirections.actionLogInFragmentToRegisterFragment()
             Navigation.findNavController(view).navigate(action)
         }
 
-        signInButton?.setOnClickListener{
-            val email = emailTextField?.text.toString().trim()
-            val password = passwordTextField?.text.toString().trim()
+        signInButton.setOnClickListener {
+            val email = emailTextField.text.toString().trim()
+            val password = passwordTextField.text.toString().trim()
 
-//            if (email.isEmpty() || password.isEmpty() ) {
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Please fill in all fields",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-////                user.delete()
-//            }
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Login user
+            loginUser(email, password)
+
         }
+        return view
+    }
 
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        sharedPreferences = requireActivity().getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+        auth = FirebaseAuth.getInstance()
+
+    }
+
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Login successful
+                    saveLoginCredentials(email, password)
+                    navigateToAllPosts()
+                    (requireActivity() as MainActivity).setBottomBarVisibility(true)
+                    (requireActivity() as MainActivity).setAddMenuItemVisibility(true)
+
+                } else {
+                    // Login failed
+                    Toast.makeText(context, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+
+
+
+    private fun navigateToAllPosts() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_logInFragment_to_allPostsFragment)
+    }
+
+    private fun saveLoginCredentials(email: String, password: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("email", email)
+        editor.putString("password", password)
+        editor.apply()
+    }
 
 
 
     }
-}
+
 
 
 

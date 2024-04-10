@@ -23,7 +23,7 @@ import com.example.solveitproject.R
 
         override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
             val post = posts?.get(position)
-//            holder.bind(post)
+            holder.bind(post)
         }
     }
 

@@ -49,15 +49,11 @@ class PostsListActivity: AppCompatActivity() {
 
                 view = view ?: convertView
 
-//                val publisherTextView: TextView? = view?.findViewById(R.id.publisherTextView)
-//                val offerTextView: TextView? = view?.findViewById(R.id.offerTextView)
-//                val contactTextView: CheckBox? = view?.findViewById(R.id.contactTextView)
-//                val generalPostIdTextView: CheckBox? = view?.findViewById(R.id.generalPostIdTextView)
+                val publisherTextView: TextView? = view?.findViewById(R.id.publisherTextView)
 
-//                publisherTextView?.text = post?.publisher
-//                offerTextView?.text = post?.offer
-//                contactTextView?.text= post?.contact
-//                generalPostIdTextView?.text= post?.postid
+
+                publisherTextView?.text = post?.publisher
+
 
                 return view!!
             }
