@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.example.solveitproject.Model.Student
 import com.example.solveitproject.Model.StudentModel
 import com.example.solveitproject.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +20,7 @@ import com.squareup.picasso.Picasso
 class ProfileFragment : Fragment() {
 
     private val args: ProfileFragmentArgs by navArgs()
+
     private lateinit var viewModel: StudentViewModel
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -62,7 +62,6 @@ class ProfileFragment : Fragment() {
 
         view.findViewById<Button>(R.id.logoutButton).setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            // Perform logout functionality here
             logoutUser()
         }
 
@@ -74,8 +73,8 @@ class ProfileFragment : Fragment() {
         }
         val myPostsButton: Button = binding.moveToMyPostsButton
         myPostsButton.setOnClickListener {
-//            val action = ProfileFragmentDirections.actionProfileFragmentToStudentPostsFragment(userId)
-//            Navigation.findNavController(view).navigate(action)
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditPostFragment(userId)
+            Navigation.findNavController(view).navigate(action)
 
         }
 

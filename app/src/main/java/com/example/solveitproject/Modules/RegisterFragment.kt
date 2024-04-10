@@ -2,9 +2,12 @@ package com.example.solveitproject.Modules
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +27,9 @@ import com.example.solveitproject.Modules.addStudentPost.ImageSelectionAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import java.util.UUID
 
 
 class RegisterFragment : Fragment() {
@@ -76,6 +82,7 @@ class RegisterFragment : Fragment() {
                 currentImageUrl = imageUrl
                 Picasso.get().load(imageUrl).into(imageView)
 
+
             }
             recyclerViewImages.adapter = adapter
 
@@ -123,6 +130,10 @@ class RegisterFragment : Fragment() {
             }
         }
     }
+
+
+
+
 
     private fun registerUser(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)

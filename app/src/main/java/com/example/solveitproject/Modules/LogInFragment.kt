@@ -68,6 +68,7 @@ class LogInFragment : Fragment() {
 
     }
 
+
     private fun loginUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
@@ -84,6 +85,8 @@ class LogInFragment : Fragment() {
                 }
             }
     }
+
+
 
 
     private fun navigateToAllPosts() {

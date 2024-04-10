@@ -14,6 +14,8 @@ class ImageSelectionAdapter (
         private val onItemClick: (String) -> Unit
     ) : RecyclerView.Adapter<ImageSelectionAdapter.ImageViewHolder>() {
 
+
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
             return ImageViewHolder(view)
@@ -31,5 +33,7 @@ class ImageSelectionAdapter (
 
         inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val imageView: ImageView = itemView.findViewById(R.id.imageView)
+
+
         }
     }

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_logInFragment_to_allPostsFragment"
             app:destination="@id/allPostsFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
 
     </fragment>
     <fragment
@@ -96,11 +99,30 @@
     </fragment>
     <fragment
         android:id="@+id/allPostsFragment"
-        android:name="com.example.dogsandddapters.Modules.GeneralPosts.AllPostsFragment"
-        android:label="AllPostsFragment" >
+        android:name="com.example.solveitproject.Modules.Posts.AllPostsFragment"
+        android:label="AllPostsFragment">
+        <action
+            android:id="@+id/action_allPostsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_allPostsFragment_to_postSpecificFragment"
             app:destination="@id/postSpecificFragment" />
-    </fragment>
+        <action
+            android:id="@+id/action_allPostsFragment_to_studentSpecificPostFragment"
+            app:destination="@id/studentSpecificPostFragment" />
+        <action
+            android:id="@+id/action_allPostsFragment_to_addStudentPostFragment"
+            app:destination="@id/addStudentPostFragment" />
 
+
+    </fragment>
+    <fragment
+        android:id="@+id/studentSpecificPostFragment"
+        android:name="com.example.solveitproject.Modules.StudentSpecificPostFragment"
+        android:label="fragment_student_specific_post"
+        tools:layout="@layout/fragment_student_specific_post" >
+    <argument
+        android:name="postId"
+        app:argType="string" />
+    </fragment>
 </navigation>
