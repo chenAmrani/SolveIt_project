@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="start"
+    android:orientation="vertical">
+<!--    tools:context=".ProfileFragment">-->
+
+    <TextView
+        android:id="@+id/profileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="86dp"
+        android:text="My Profile:"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/contactInfoLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="My Information:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Name TextView -->
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:text="Name:"
+        android:textSize="18sp" /> <!-- Center text -->
+
+    <!-- Types of Dogs TextView -->
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:text="Email: "
+        android:textSize="16sp" /> <!-- Center text -->
+
+    <!-- Contact Info Section -->
+
+
+    <!-- Phone TextView -->
+    <!-- Center text -->
+
+    <!-- Email TextView -->
+    <!-- Center text -->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
+
+
+    <!-- Edit Button -->
+    <!-- Center text and button -->
+
+    <!-- Logout Button -->
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Edit My Profile" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Logout" /> <!-- Center text and button -->
+
+    <Button
+        android:id="@+id/moveToMyPostsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Move to My Posts" />
+
+</LinearLayout>
+
+

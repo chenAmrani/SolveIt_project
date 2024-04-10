@@ -8,9 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -43,14 +45,24 @@ class MainActivity : AppCompatActivity() {
     private var isAddMenuItemVisible = true
 
 
+    private fun isLoggedIn(): Boolean {
+        // Check if the user is logged in. You can implement your own logic here.
+        return FirebaseAuth.getInstance().currentUser != null
+    }
+
     //    private var isAddMenuItemVisible = true
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.menu, menu)
-        val addMenuItem = menu?.findItem(R.id.menuItemActionBarAddStudent)
-        addMenuItem?.isVisible = isAddMenuItemVisible
+        if (isLoggedIn()) {
+            menuInflater.inflate(R.menu.bottom_nav_menu, menu)
+
+            super.onCreateOptionsMenu(menu)
+            menuInflater.inflate(R.menu.menu, menu)
+            val addMenuItem = menu?.findItem(R.id.menuItemActionBarAddStudent)
+            addMenuItem?.isVisible = isAddMenuItemVisible
+        }
         return true
     }
+
 
     fun setAddMenuItemVisibility(isVisible: Boolean) {
         isAddMenuItemVisible = isVisible
@@ -64,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.menuItemActionBarAddStudent -> {
-                navController?.navigate(R.id.action_global_addPostFragment)
+                navController?.navigate(R.id.action_logInFragment_to_addStudentPostFragment)
                 true
             }
 
@@ -80,6 +92,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             bottomNavigationView.visibility = View.GONE
         }
+    }
+
+    private fun navigateToProfileFragment() {
+        // Navigate to the profile page
+        val navController = findNavController(R.id.navHostMain)
+        navController.navigate(R.id.profileFragment)
     }
 
 }

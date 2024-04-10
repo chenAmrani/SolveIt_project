@@ -43,13 +43,14 @@ import java.util.concurrent.Executors
 
 
         fun updateStudent(id:String,student: Student, callback: () -> Unit) {
-            firebaseStudentModel.updateStudent(id,student) {
+            firebaseStudentModel.updateStudent(id, student) {
                 executor.execute {
                     database.StudentDao().update(student)
-                    //refreshStudent(student.id) {
-                    callback()
-                    //}
+//                    refreshStudent(student.id) {
+                        callback()
+                        //}
+                    }
                 }
             }
         }
-    }
+

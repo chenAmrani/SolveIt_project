@@ -65,7 +65,6 @@ class FirebaseStudentModel {
                         Log.i("TAG", "Student id: null2")
                     }
                 } else {
-                    // Handle failure
                     callback(null)
                 }
             }

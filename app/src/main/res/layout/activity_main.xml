@@ -9,6 +9,8 @@
     app:barrierDirection="left"
     tools:context=".MainActivity" >
 
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostMain"
         android:name="androidx.navigation.fragment.NavHostFragment"

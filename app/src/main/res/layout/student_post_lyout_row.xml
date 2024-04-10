@@ -12,19 +12,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/CoureNameLabelTextView"
+            android:id="@+id/courseLabelTextViewstudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coure name:"
+            android:text="Course: "
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/requestTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="22sp"/>
     </LinearLayout>
 
     <!-- Text View for the offer -->
@@ -34,19 +28,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/TopicLabelTextView"
+            android:id="@+id/topicLabelTextViewstudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Topic:"
+            android:text="Topic: "
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/offerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"/>
     </LinearLayout>
 
     <!-- Text View for contact information -->
@@ -56,29 +44,37 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/AdditonalTextLabelTextView"
+            android:id="@+id/additionalTextLabelTextViewstudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Additonal Text"
+            android:text="Additional Text: "
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/contactTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18sp"/>
     </LinearLayout>
 
     <!-- Text View for general post ID -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/studentPostIdLabelTextViewstudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post ID: "
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
     <!-- Image View for the post -->
     <ImageView
-        android:id="@+id/postImageView"
+        android:id="@+id/postImageViewstudent"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:scaleType="centerCrop" />
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"/>
 </LinearLayout>

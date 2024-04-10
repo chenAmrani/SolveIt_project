@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F9F3"
+    android:padding="16dp"
+    tools:context=".Modules.addStudentPost.addStudentPostFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="78dp"
+            android:text="Course:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextCourseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewCourse"
+            android:layout_marginBottom="8dp"
+            android:hint="Type the name of the course here"
+            android:inputType="textMultiLine"
+            android:maxLines="2" />
+
+        <TextView
+            android:id="@+id/textViewTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextCourseName"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Topic"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextTopicName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTopic"
+            android:layout_marginBottom="16dp"
+            android:hint="Type the name of the topic here"
+            android:inputType="textMultiLine"
+            android:maxLines="2" />
+
+        <TextView
+            android:id="@+id/textViewAdditionalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextTopicName"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Additional Text:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextAdditonalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewAdditionalText"
+            android:layout_marginBottom="16dp"
+            android:hint="Additional Text "
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextAdditonalText"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#5CC5F5"
+            android:text="Upload Image" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnUploadImage"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#5CC5F5"
+            android:text="Post" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_toEndOf="@id/btnPost"
+            android:backgroundTint="#5CC5F5"
+            android:text="Cancel" />
+
+    </RelativeLayout>
+
+</ScrollView>
