@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.solveitproject.base.MyApplication
-//import com.google.firebase.Timestamp
-//import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FieldValue
+import com.google.protobuf.Timestamp
+
+
 
 @Entity
 data class Post(
@@ -45,12 +47,12 @@ data class Post(
             val curseName= json[CURSE_NAME_KEY] as? String ?: ""
             val topicName = json[TOPIC_NAME_KEY] as? String ?: ""
             val publisher = json[PUBLISHER_KEY] as? String ?: ""
-            // val image = json[IMAGE_KEY] as? String ?: ""
+             val image = json[IMAGE_KEY] as? String ?: ""
             val post = Post(postid, curseName, topicName, publisher)
-//            val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
-//            timestamp?.let {
-//                post.lastUpdated = it.seconds
-//            }
+            val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
+            timestamp?.let {
+                post.lastUpdated = it.seconds
+            }
             return post
         }
     }
@@ -60,7 +62,8 @@ data class Post(
         get() {
             return hashMapOf(
                 id_KEY to postid,
-//                LAST_UPDATED to FieldValue.serverTimestamp(),
+                IMAGE_KEY to imageUrl!!,
+                LAST_UPDATED to FieldValue.serverTimestamp(),
                 PUBLISHER_KEY to publisher!!
             )
 

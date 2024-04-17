@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.solveitproject.base.MyApplication
+import com.google.protobuf.Timestamp
 
 
 @Entity
@@ -56,10 +57,10 @@ import com.example.solveitproject.base.MyApplication
                 val studentPost= StudentPost(postid,publisher,course,topic,additionalText, image)
 
 
-//                val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
-//                timestamp?.let {
-//                    studentPost.lastUpdated = it.seconds
-//                }
+                val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
+                timestamp?.let {
+                    studentPost.lastUpdated = it.seconds
+                }
                 return studentPost
             }
         }

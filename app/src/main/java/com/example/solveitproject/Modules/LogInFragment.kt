@@ -62,7 +62,8 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setBottomBarVisibility(false)
+        (requireActivity() as MainActivity).setAddMenuItemVisibility(false)
         sharedPreferences = requireActivity().getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
         auth = FirebaseAuth.getInstance()
 
@@ -86,12 +87,21 @@ class LogInFragment : Fragment() {
             }
     }
 
-
-
-
     private fun navigateToAllPosts() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_logInFragment_to_allPostsFragment)
+        // Retrieve the current user from Firebase Authentication
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.let { user ->
+            val email = user.email
+            val userId = user.uid
+
+            // Navigate to the all posts fragment and pass the user's email and user ID as arguments
+            val action = LogInFragmentDirections.actionLogInFragmentToAllPostsFragment()
+            Navigation.findNavController(requireView()).navigate(action)
+        }
     }
+
+
+
 
     private fun saveLoginCredentials(email: String, password: String) {
         val editor = sharedPreferences.edit()

@@ -42,7 +42,11 @@
         android:id="@+id/postSpecificFragment"
         android:name="com.example.solveitproject.PostSpecificFragment"
         android:label="fragment_post_specific"
-        tools:layout="@layout/fragment_post_specific" />
+        tools:layout="@layout/fragment_post_specific" >
+        <action
+            android:id="@+id/action_postSpecificFragment_to_EditPostFragment"
+            app:destination="@id/editPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addStudentPostFragment"
         android:name="com.example.solveitproject.Modules.addStudentPost.addStudentPostFragment"
@@ -53,18 +57,6 @@
             app:argType="string" />
         <action
             android:id="@+id/action_addStudentPostFragment_to_AllPostsFragment"
-            app:destination="@id/allPostsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/EditPostFragment"
-        android:name="com.example.solveitProject.Modules.EditPostFragment"
-        android:label="EditPostFragment"
-        tools:layout="@layout/fragment_edit_post">
-        <argument
-            android:name="postId"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_EditPostFragment_to_AllPostsFragment"
             app:destination="@id/allPostsFragment" />
     </fragment>
     <fragment
@@ -79,24 +71,20 @@
             android:name="userId"
             app:argType="string" />
         <action
-            android:id="@+id/action_profileFragment_to_EditPostFragment"
-            app:destination="@id/EditPostFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/EditProfileFragment"
-        android:name="com.example.solveitproject.editProfileFragment">
-        <argument
-            android:name="email"
-            app:argType="string" />
+            android:id="@+id/action_profileFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
         <action
-            android:id="@+id/action_EditProfileFragment_to_AllPostsFragment"
+            android:id="@+id/action_profileFragment_to_allPostsFragment"
             app:destination="@id/allPostsFragment" />
         <action
-            android:id="@+id/action_EditProfileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-
-
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_studentPostsFragment"
+            app:destination="@id/studentPostsFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/allPostsFragment"
         android:name="com.example.solveitproject.Modules.Posts.AllPostsFragment"
@@ -114,7 +102,6 @@
             android:id="@+id/action_allPostsFragment_to_addStudentPostFragment"
             app:destination="@id/addStudentPostFragment" />
 
-
     </fragment>
     <fragment
         android:id="@+id/studentSpecificPostFragment"
@@ -124,5 +111,63 @@
     <argument
         android:name="postId"
         app:argType="string" />
+        <action
+            android:id="@+id/action_studentSpecificPostFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.solveitproject.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.example.solveitProject.Modules.EditPostFragment"
+        tools:layout="@layout/fragment_edit_post">
+        <argument
+            android:name="postId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_EditPostFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentPostsFragment"
+        android:name="com.example.solveitproject.Modules.StudentPost.StudentPostsFragment"
+        android:label="StudentPostsFragment" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_studentPostsFragment_to_studentSpecificPostFragment"
+            app:destination="@id/studentSpecificPostFragment" />
+        <action
+            android:id="@+id/action_studentPostsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/action_studentPostsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_studentPostsFragment_to_addStudentPostFragment"
+            app:destination="@id/addStudentPostFragment" />
+        <action
+            android:id="@+id/action_studentPostsFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+    </fragment>
+
 </navigation>

@@ -47,12 +47,13 @@ class AllPostsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[PostViewModel::class.java]
 
-
         progressBar = binding.progressBar
 
         progressBar?.visibility = View.VISIBLE
 
         viewModel.posts = StudentPostModel.instance.getAllstudentPosts("")
+
+        Log.i("users",viewModel.posts.toString())
 
 
 
@@ -66,23 +67,23 @@ class AllPostsFragment : Fragment() {
         val bottomNavigationView =
             requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
         StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
-            val studentId = it?.id
-            val studentEmail = it?.email
+            val studentId = it?.id.toString()
+            val studentEmail = it?.email.toString()
             bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.profileFragment -> {
                         // Navigate to the user profile fragment
                         val action =
                             AllPostsFragmentDirections.actionAllPostsFragmentToProfileFragment(
-                                studentId.toString(),
-                                studentEmail.toString()
+                                studentEmail,
+                                studentId,
                             )
                         Navigation.findNavController(view).navigate(action)
                         true // Return true to indicate that the item has been handled
                     }
                     R.id.addPostFragment -> {
                         // Navigate to the add post fragment
-                        val action = AllPostsFragmentDirections.actionAllPostsFragmentToAddStudentPostFragment(studentEmail.toString())
+                        val action = AllPostsFragmentDirections.actionAllPostsFragmentToAddStudentPostFragment(studentEmail)
                         Navigation.findNavController(view).navigate(action)
                         true // Return true to indicate that the item has been handled
                     }
@@ -90,25 +91,23 @@ class AllPostsFragment : Fragment() {
                 }
             }
 
-//        myPostsButton?.setOnClickListener {
-//            StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { student ->
-//                val studentEmail = student?.email
-//                if (studentEmail != null) {
-//                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment()
-//                    Navigation.findNavController(view).navigate(action)
-//                } else {
-//                    // Handle the case where student is null
-//                }
-//            }
-//        }
+        myPostsButton?.setOnClickListener {
+            StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { student ->
+                val studentEmail = student?.email
+                if (studentEmail != null) {
+                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(studentId!!)
+                    Navigation.findNavController(view).navigate(action)
+                }
+            }
+        }
             adapter?.listener = object : PostsRecyclerViewActivity.OnItemClickListener {
 
                 override fun onItemClick(position: Int) {
                     Log.i("TAG", "PostsRecyclerAdapter: Position clicked $position")
                     val post = viewModel.posts?.value?.get(position)
                     post?.let {
-//                    val action = AllPostsFragmentDirections
-//                    Navigation.findNavController(view).navigate(action)
+                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToPostSpecificFragment()
+                    Navigation.findNavController(view).navigate(action)
                     }
                 }
 
@@ -137,11 +136,11 @@ class AllPostsFragment : Fragment() {
             myPostsButton.setOnClickListener {
                 StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
                     val studentId = it?.id
-//                val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(studentId!!)
-//                Navigation.findNavController(view).navigate(action)
+                val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(studentId!!)
+                Navigation.findNavController(view).navigate(action)
                 }
             }
-            }
+        }
             return view
         }
 

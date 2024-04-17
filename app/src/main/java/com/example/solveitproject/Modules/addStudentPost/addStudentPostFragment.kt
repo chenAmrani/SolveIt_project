@@ -97,9 +97,9 @@ class addStudentPostFragment : Fragment() {
             } else {
                 StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { user ->
                     val ID: String = UUID.randomUUID().toString()
-                    val publisher = user?.id.toString()
+                    val studentId = user?.id.toString()
 
-                    val studentPost = StudentPost(ID, publisher, course, topic, additionalText, currentImageUrl!!)
+                    val studentPost = StudentPost(ID, studentId, course, topic, additionalText, currentImageUrl!!)
                     StudentPostModel.instance.addStudentPost(user?.email!!, studentPost) {}
 
 

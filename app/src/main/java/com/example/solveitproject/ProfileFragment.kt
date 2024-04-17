@@ -13,9 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.solveitproject.Model.StudentModel
+import com.example.solveitproject.Modules.Posts.AllPostsFragmentDirections
 import com.example.solveitproject.databinding.FragmentProfileBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
+
 
 class ProfileFragment : Fragment() {
 
@@ -46,17 +49,22 @@ class ProfileFragment : Fragment() {
 
         val email = args.email
         var userId= args.userId
-        // Fetch user details using the email
+
         viewModel.student= StudentModel.instance.getStudentByEmail(email) { student ->
-            view.findViewById<TextView>(R.id.emailTextView).text = "Email: ${student?.email}"
-            view.findViewById<TextView>(R.id.nameTextView).text = "Name: ${student?.name}"
             if (student != null) {
-                userId= student.id
+                view.findViewById<TextView>(R.id.nameTextView).text = "Name: ${student.name}"
+                view.findViewById<TextView>(R.id.emailTextView).text = "Email: ${student.email}"
+                userId = student.id
+
+                Picasso.get().load(student.image)
+                    .resize(400, 400)
+                    .centerCrop()
+                    .into(imageView2)
+            } else {
+                Log.e("ProfileFragment", "Student details not found for email: $email")
+                view.findViewById<TextView>(R.id.emailTextView).text = "Email: Not found"
+                view.findViewById<TextView>(R.id.nameTextView).text = "Name: Not found"
             }
-            Picasso.get().load(student?.image)
-                .resize(400, 400)
-                .centerCrop()
-                .into(imageView2)
 
         }
 
@@ -66,22 +74,50 @@ class ProfileFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.editButton).setOnClickListener {
-            // Handle navigating to edit profile fragment
             Log.i("ProfileFragment", "MoveToEdit-userId: $userId")
-            val action = ProfileFragmentDirections.actionProfileFragmentToEditPostFragment(email)
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(email,userId)
             Navigation.findNavController(view).navigate(action)
         }
         val myPostsButton: Button = binding.moveToMyPostsButton
         myPostsButton.setOnClickListener {
-            val action = ProfileFragmentDirections.actionProfileFragmentToEditPostFragment(userId)
+            val action = ProfileFragmentDirections.actionProfileFragmentToStudentPostsFragment(email,userId)
             Navigation.findNavController(view).navigate(action)
 
         }
 
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
+        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
+            val studentId = it?.id.toString()
+            val studentEmail = it?.email.toString()
+            bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.allPostsFragment -> {
+                        // Navigate to the user allPosts fragment
+                        val action =
+                            ProfileFragmentDirections.actionProfileFragmentToAllPostsFragment()
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    R.id.addPostFragment -> {
+                        // Navigate to the add post fragment
+                        val action =
+                            AllPostsFragmentDirections.actionAllPostsFragmentToAddStudentPostFragment(
+                                studentEmail
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
     }
 
     private fun logoutUser() {
-//        Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_entryFragment)
+        Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_logInFragment)
     }
 
     override fun onDestroy() {

@@ -98,7 +98,8 @@ class RegisterFragment : Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-
+            (requireActivity() as MainActivity).setBottomBarVisibility(false)
+            (requireActivity() as MainActivity).setAddMenuItemVisibility(false)
             auth = FirebaseAuth.getInstance()
             ImagePreloadingTask().execute()
 
@@ -156,7 +157,7 @@ class RegisterFragment : Fragment() {
                             user.delete()
 
                         } else {
-                            val student = Student(name, id, email, currentImageUrl!!)
+                            val student = Student(name, email, id, currentImageUrl!!)
                             val db = FirebaseFirestore.getInstance()
                             db.collection("students")
                                 .document(userId)

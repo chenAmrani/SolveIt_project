@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        tools:ignore="WrongManifestParent"
-        android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="WrongManifestParent" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"
@@ -30,6 +32,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SolveItProject"
         tools:targetApi="31">
+        <activity
+            android:name=".Modules.StudentPost.StudentPostRecyclerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Modules.StudentPost.StudentPostListActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

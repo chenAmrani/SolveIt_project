@@ -26,7 +26,6 @@ class FirebaseStudentPostModel {
         Log.i("getAllStudentPosts", "getAllStudentPosts -publisher ${publisher}")
         db.collection(STUDENTPOST_COLLECTION_PATH)
             .whereGreaterThanOrEqualTo(StudentPost.LAST_UPDATED, Timestamp(since, 0))
-            // .whereEqualTo("postpublisher", publisher)
             .get().addOnCompleteListener {
                 when (it.isSuccessful) {
                     true -> {
@@ -36,21 +35,19 @@ class FirebaseStudentPostModel {
                             if (studentPost != null) {
                                 studentPosts.add(studentPost)
                             }
-
                         }
                         callback(studentPosts)
                     }
                     false -> callback(listOf())
                 }
             }
-    }
+        }
 
     fun addStudentPost(student_post: StudentPost, callback: () -> Unit) {
         db.collection(STUDENTPOST_COLLECTION_PATH).document(student_post.postid).set(student_post.json).addOnSuccessListener {
             callback()
         }
     }
-
 
 
     fun getStudentPostById(postid: String, callback: (StudentPost?) -> Unit) {
@@ -70,7 +67,6 @@ class FirebaseStudentPostModel {
             callback()
         }
     }
-
 
 
     fun deleteStudentPost(id: String, callback: () -> Unit) {

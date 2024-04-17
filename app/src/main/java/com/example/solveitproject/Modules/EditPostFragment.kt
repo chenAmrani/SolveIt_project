@@ -26,12 +26,10 @@
 //import com.example.solveitproject.Modules.addStudentPost.ImageSelectionAdapter
 //import com.example.solveitproject.R
 //import com.squareup.picasso.Picasso
-//import androidx.navigation.fragment.navArgs
-//import com.example.solveitProject.Modules.EditPostFragmentArgs
 //
 //
 //class EditPostFragment : Fragment() {
-//    private val args: EditPostFragmentArgs by navArgs()
+//    private val EditPostFragmentArgs by navArgs()
 //
 //    private lateinit var editTextCourse: EditText
 //    private lateinit var editTextTopic: EditText
@@ -81,7 +79,7 @@
 //                    StudentPostModel.instance.deleteStudentPost(it) {}
 //                }
 //            }
-//            val action = EditPostFragmentDirections.actionEditPostFragmentToGeneralPostsFragment()
+//            val action = EditPostFragmentDirections.
 //            Navigation.findNavController(view).navigate(action)
 //        }
 //        buttonSave.setOnClickListener {
@@ -111,7 +109,6 @@
 //    }
 //
 //    private fun setupUI(view: View) {
-////        editTextPostId = view.findViewById(R.id.editTextPostId)
 //        editTextCourse = view.findViewById(R.id.editTextCourse)
 //        editTextTopic = view.findViewById(R.id.editTextTopic)
 //        editTextAddionalText = view.findViewById(R.id.editTextAdditionalText)
@@ -120,7 +117,7 @@
 //        buttonSelectImage = view.findViewById(R.id.btnSelectImage)
 //        buttonSave = view.findViewById(R.id.buttonSave)
 //        imageView = view.findViewById(R.id.imageView)
-//        val imageView1: ImageView = view.findViewById(R.id.imageView1)
+////        val imageView1: ImageView = view.findViewById(R.id.imageView1)
 //
 //
 //
@@ -133,18 +130,6 @@
 //
 //            val imageUrls = listOf(
 //                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg",
-//                "https://www.southernliving.com/thmb/NnmgOEms-v3uG4T6SRgc8QDGlUA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-837898820-2000-667fc4cc028a43369037e229c9bd52fb.jpg",
-//                "https://media.npr.org/assets/img/2022/05/25/gettyimages-917452888-edit_custom-c656c35e4e40bf22799195af846379af6538810c-s1100-c50.jpg",
-//                "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2022/6/16/1/shutterstock_1862856634.jpg.rend.hgtvcom.1280.853.suffix/1655430860853.jpeg",
-//                "https://m.media-amazon.com/images/I/71U+j7MrRqL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/71VdO22kE0L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81DdQ4NqADL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/614ZHzz6P+L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/71NGW62YZ4L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/613Arr4PtrL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/91gMs06F57L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81jViwAqYxL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81mkoOlGsTL._AC_UL480_FMwebp_QL65_.jpg"
 //            )
 //
 //
@@ -166,17 +151,15 @@
 //                .show()
 //        }
 //
-//
 //    }
 //
 //    private fun saveImageToGallery(bitmap: Bitmap) {
-//        // Define the values to insert into the MediaStore
 //        val contentValues = ContentValues().apply {
 //            put(MediaStore.Images.Media.DISPLAY_NAME, "Image_${System.currentTimeMillis()}.jpg")
 //            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
 //        }
 //
-//        // Insert the image into the MediaStore
+//        // Insert the image into MediaStore
 //        val uri = requireContext().contentResolver.insert(
 //            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
 //            contentValues
@@ -212,18 +195,6 @@
 //        private fun preloadImages() {
 //            val imageUrls = listOf(
 //                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg",
-//                "https://www.southernliving.com/thmb/NnmgOEms-v3uG4T6SRgc8QDGlUA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-837898820-2000-667fc4cc028a43369037e229c9bd52fb.jpg",
-//                "https://media.npr.org/assets/img/2022/05/25/gettyimages-917452888-edit_custom-c656c35e4e40bf22799195af846379af6538810c-s1100-c50.jpg",
-//                "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2022/6/16/1/shutterstock_1862856634.jpg.rend.hgtvcom.1280.853.suffix/1655430860853.jpeg",
-//                "https://m.media-amazon.com/images/I/71U+j7MrRqL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/71VdO22kE0L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81DdQ4NqADL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/614ZHzz6P+L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/71NGW62YZ4L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/613Arr4PtrL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/91gMs06F57L._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81jViwAqYxL._AC_UL480_FMwebp_QL65_.jpg",
-//                "https://m.media-amazon.com/images/I/81mkoOlGsTL._AC_UL480_FMwebp_QL65_.jpg"
 //            )
 //
 //            for (imageUrl in imageUrls) {
