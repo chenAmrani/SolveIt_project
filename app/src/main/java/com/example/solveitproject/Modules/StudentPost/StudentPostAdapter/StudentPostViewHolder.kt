@@ -27,7 +27,7 @@ class StudentPostViewHolder(val itemView: View,
         topicTextView = itemView.findViewById(R.id.topicLabelTextViewstudent)
         additionalTextView = itemView.findViewById(R.id.additionalTextLabelTextViewstudent)
         imageImageView = itemView.findViewById(R.id.postImageViewstudent)
-        idTextView = itemView.findViewById(R.id.studentPostIdLabelTextViewstudent)
+//        idTextView = itemView.findViewById(R.id.studentPostIdLabelTextViewstudent)
 
 
         itemView.setOnClickListener {

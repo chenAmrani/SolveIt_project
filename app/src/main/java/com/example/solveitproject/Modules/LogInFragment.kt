@@ -12,7 +12,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.solveitproject.MainActivity
+import com.example.solveitproject.Models.PostModel
+import com.example.solveitproject.Models.StudentPostModel
+import com.example.solveitproject.Modules.Posts.PostViewModel
 import com.example.solveitproject.R
+import com.example.solveitproject.dao.AppLocalDataBaseStudent
+import com.example.solveitproject.dao.AppLocalDataBaseStudentPost
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -31,7 +36,6 @@ class LogInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
-
         emailTextField = view.findViewById(R.id.SignInTextEmailAddress)
         passwordTextField = view.findViewById(R.id.SignInTextPassword)
         signInButton = view.findViewById(R.id.BtnSignIn)

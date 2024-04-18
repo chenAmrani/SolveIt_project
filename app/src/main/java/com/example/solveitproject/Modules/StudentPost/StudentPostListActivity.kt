@@ -24,14 +24,14 @@ class StudentPostListActivity : AppCompatActivity() {
 
 
             StudentPostListView = findViewById(R.id.lvstudentPostList)
-            StudentPostListView?.adapter = PersonPostsListAdapter(studentPosts)
+            StudentPostListView?.adapter = StudentPostsListAdapter(studentPosts)
 
             StudentPostListView?.setOnItemClickListener { parent, view, position, id ->
                 Log.i("TAG", "Row was clicked at: $position")
             }
         }
 
-        class PersonPostsListAdapter(val studentposts: List<StudentPost>?) : BaseAdapter() {
+        class StudentPostsListAdapter(val studentposts: List<StudentPost>?) : BaseAdapter() {
 
             override fun getCount(): Int = studentposts?.size ?: 0
 
@@ -52,14 +52,13 @@ class StudentPostListActivity : AppCompatActivity() {
 
                 val courseTextView: TextView? = view?.findViewById(R.id.courseLabelTextViewstudent)
                 val topicTextView: TextView? = view?.findViewById(R.id.topicLabelTextViewstudent)
-                val additionalTextTextView: CheckBox? = view?.findViewById(R.id.additionalTextLabelTextViewstudent)
-                val studentPostIdTextView: CheckBox? =
-                    view?.findViewById(R.id.studentPostIdLabelTextViewstudent)
+                val additionalTextTextView: TextView? = view?.findViewById(R.id.additionalTextLabelTextViewstudent)
+//                val studentPostIdTextView: TextView? = view?.findViewById(R.id.studentPostIdLabelTextViewstudent)
 
                 courseTextView?.text = studentpost?.course
                 topicTextView?.text = studentpost?.topic
                 additionalTextTextView?.text = studentpost?.additionalText
-                studentPostIdTextView?.text = studentpost?.postid
+//                studentPostIdTextView?.text = studentpost?.postid
 
                 return view!!
             }

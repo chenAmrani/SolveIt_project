@@ -8,21 +8,21 @@ import com.example.solveitproject.Model.Student
 import com.example.solveitproject.base.MyApplication
 
 
-@Database(entities = [Post::class], version = 1)
-  abstract class AppLocalDbRepository : RoomDatabase() {
+@Database(entities = [Post::class], version = 3)
+  abstract class AppLocalDbPostRepository : RoomDatabase() {
       abstract fun PostDao(): PostDao
   }
 
 
 object AppLocalDataBasePost {
-val db: AppLocalDbRepository by lazy {
+val db: AppLocalDbPostRepository by lazy {
 
     val context = MyApplication.Globals.appContext
         ?:throw IllegalStateException("Application context not available")
 
     Room.databaseBuilder(
         context,
-        AppLocalDbRepository::class.java,
+        AppLocalDbPostRepository::class.java,
         "PostFileName.db"
     )
         .fallbackToDestructiveMigration()

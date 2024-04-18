@@ -7,19 +7,19 @@ import com.example.solveitproject.Model.Student
 import com.example.solveitproject.base.MyApplication
 
     @Database(entities = [Student::class], version = 5)
-    abstract class AppLocalDbPRepository : RoomDatabase() {
+    abstract class AppLocalDbStudentRepository : RoomDatabase() {
         abstract fun StudentDao(): StudentDao
     }
 
     object AppLocalDataBaseStudent {
-        val db: AppLocalDbPRepository by lazy {
+        val db: AppLocalDbStudentRepository by lazy {
 
             val context = MyApplication.Globals.appContext
                 ?: throw IllegalStateException("Application context not available")
 
             Room.databaseBuilder(
                 context,
-                AppLocalDbPRepository::class.java,
+                AppLocalDbStudentRepository::class.java,
                 "StudentFileName.db"
             )
                 .fallbackToDestructiveMigration()

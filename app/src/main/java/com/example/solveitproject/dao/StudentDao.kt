@@ -26,5 +26,5 @@ interface StudentDao {
         fun getStudentByEmail(email: String): LiveData<Student>
 
         @Update
-        fun update(person: Student)
+        fun update(student: Student)
     }

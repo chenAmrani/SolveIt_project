@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
 
             super.onCreateOptionsMenu(menu)
             menuInflater.inflate(R.menu.menu, menu)
-            val addMenuItem = menu?.findItem(R.id.menuItemActionBarAddStudent)
-            addMenuItem?.isVisible = isAddMenuItemVisible
+//            val addMenuItem = menu?.findItem(R.id.menuItemActionBarAddStudent)
+//            addMenuItem?.isVisible = isAddMenuItemVisible
         }
         return true
     }
@@ -75,10 +75,10 @@ class MainActivity : AppCompatActivity() {
                 navController?.navigateUp()
                 true
             }
-            R.id.menuItemActionBarAddStudent -> {
-                navController?.navigate(R.id.action_logInFragment_to_addStudentPostFragment)
-                true
-            }
+//            R.id.menuItemActionBarAddStudent -> {
+//                navController?.navigate(R.id.action_logInFragment_to_addStudentPostFragment)
+//                true
+//            }
 
             else -> NavigationUI.onNavDestinationSelected(item, navController!!)
         }

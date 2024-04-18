@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 class FirebasePostModel {
 
     companion object {
-        const val POST_COLLECTION_PATH = "Posts"
+        const val POST_COLLECTION_PATH = "posts"
     }
 
     val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -27,7 +27,8 @@ class FirebasePostModel {
                 when (it.isSuccessful) {
                     true -> {
                         val Posts: MutableList<Post> = mutableListOf()
-                        Log.i("TAG", "result: ${it.result.size()}")
+
+                        Log.i("TAG2", "result: ${it.result.size()}")
                         for (json in it.result) {
                             val Post = Post.fromJSON(json.data)
                             Posts.add(Post)
