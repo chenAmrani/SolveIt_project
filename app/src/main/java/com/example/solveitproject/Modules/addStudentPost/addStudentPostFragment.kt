@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -21,7 +22,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.StudentModel
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Models.StudentPostModel
+import com.example.solveitproject.Modules.StudentSpecificPostFragmentDirections
+import com.example.solveitproject.ProfileFragmentDirections
 import com.example.solveitproject.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import java.util.UUID
@@ -63,6 +67,36 @@ class addStudentPostFragment : Fragment() {
         btnUploadImage = view.findViewById(R.id.btnUploadImage)
         imageView = view.findViewById(R.id.imageView)
 
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
+        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
+            val studentId = it?.id.toString()
+            val studentEmail = it?.email.toString()
+            bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.allPostsFragment -> {
+                        // Navigate to the user allPosts fragment
+                        val action =
+                            addStudentPostFragmentDirections.actionAddStudentPostFragmentToAllPostsFragment()
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    R.id.profileFragment -> {
+                        // Navigate to profile
+                        val action =
+                            addStudentPostFragmentDirections.actionAddStudentPostFragmentToProfileFragment(
+                                studentEmail,
+                                studentId
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
         btnUploadImage.setOnClickListener {
             val dialogView = layoutInflater.inflate(R.layout.dialog_image_selection, null)
             val recyclerViewImages: RecyclerView = dialogView.findViewById(R.id.recyclerViewImages)
@@ -70,8 +104,20 @@ class addStudentPostFragment : Fragment() {
             recyclerViewImages.layoutManager = GridLayoutManager(requireContext(), 4)
 
             val imageUrls = listOf(
-            "https://cdn.education.com/cdn-cgi/image/width=320/files/static/exercises/screenshots/screenshot-exercise-partial-products-small.png"
-                )
+                "https://cdn.education.com/cdn-cgi/image/width=320/files/static/exercises/screenshots/screenshot-exercise-partial-products-small.png",
+                "https://i.imagesup.co/images2/2f039076a62fd802e2424ad2bf70a5ab5bab0316.jpg",
+                "https://i.imagesup.co/images2/0__05c0386463498d.jpg",
+                "https://i.imagesup.co/images2/0__05d7b9801e2b5a.jpg",
+                "https://i.imagesup.co/images2/c1c2aa2c0d0ea07f02f1e54487b4b3d0d798e40a.png",
+                "https://i.imagesup.co/images2/86a586505d6c4ee3da4d628cf05179f681a10b56.png",
+                "https://images.slideplayer.com/12/3406264/slides/slide_3.jpg",
+                "https://i.ytimg.com/vi/WInk-m_6l1c/maxresdefault.jpg",
+                "https://i.imagesup.co/images2/6df7b33bc83eca7b12d14783cd462f48177502f6.png",
+                "https://images.slideplayer.com/12/3406264/slides/slide_9.jpg",
+                "https://images.slideplayer.com/12/3406264/slides/slide_6.jpg",
+                "https://images.slideplayer.com/12/3406264/slides/slide_13.jpg",
+                "https://i.imagesup.co/images2/a92902c515962eeee8c4ebec8c231ea489435e58.png",
+                "https://i.imagesup.co/images2/7f0be64988a41b18daa0f3468bd3e1ba40c558a3.jpg"                )
             val adapter = ImageSelectionAdapter(imageUrls) { imageUrl ->
                 currentImageUrl = imageUrl
                 Picasso.get().load(imageUrl).into(imageView)
@@ -97,14 +143,16 @@ class addStudentPostFragment : Fragment() {
             } else {
                 StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { user ->
                     val ID: String = UUID.randomUUID().toString()
-                    val studentId = user?.id.toString()
+                    val postpublisher = user?.id.toString()
+                    Log.i("publisher",postpublisher)
 
-                    val studentPost = StudentPost(ID, studentId, course, topic, additionalText, currentImageUrl!!)
+                    val studentPost = StudentPost(ID, postpublisher, course, topic, additionalText, currentImageUrl!!)
                     StudentPostModel.instance.addStudentPost(user?.email!!, studentPost) {}
 
+                        val action =
+                            addStudentPostFragmentDirections.actionAddStudentPostFragmentToAllPostsFragment()
+                        Navigation.findNavController(view).navigate(action)
 
-                    val action = addStudentPostFragmentDirections.actionAddStudentPostFragmentToAllPostsFragment()
-                    Navigation.findNavController(view).navigate(action)
                 }
             }
         }
@@ -143,6 +191,7 @@ class addStudentPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ImagePreloadingTask().execute()
+
     }
 
     inner class ImagePreloadingTask : AsyncTask<Void, Void, Unit>() {
@@ -152,7 +201,20 @@ class addStudentPostFragment : Fragment() {
 
         private fun preloadImages() {
             val imageUrls = listOf(
-                "https://cdn.education.com/cdn-cgi/image/width=320/files/static/exercises/screenshots/screenshot-exercise-partial-products-small.png"
+                "https://cdn.education.com/cdn-cgi/image/width=320/files/static/exercises/screenshots/screenshot-exercise-partial-products-small.png",
+                "https://i.imagesup.co/images2/2f039076a62fd802e2424ad2bf70a5ab5bab0316.jpg",
+                "https://i.imagesup.co/images2/0__05c0386463498d.jpg",
+                "https://i.imagesup.co/images2/0__05d7b9801e2b5a.jpg",
+                "https://i.imagesup.co/images2/c1c2aa2c0d0ea07f02f1e54487b4b3d0d798e40a.png",
+                "https://i.imagesup.co/images2/86a586505d6c4ee3da4d628cf05179f681a10b56.png",
+                "https://images.slideplayer.com/12/3406264/slides/slide_3.jpg",
+                "https://i.ytimg.com/vi/WInk-m_6l1c/maxresdefault.jpg",
+                "https://i.imagesup.co/images2/6df7b33bc83eca7b12d14783cd462f48177502f6.png",
+                "https://images.slideplayer.com/12/3406264/slides/slide_9.jpg",
+                "https://images.slideplayer.com/12/3406264/slides/slide_6.jpg",
+                "https://images.slideplayer.com/12/3406264/slides/slide_13.jpg",
+                "https://i.imagesup.co/images2/a92902c515962eeee8c4ebec8c231ea489435e58.png",
+                "https://i.imagesup.co/images2/7f0be64988a41b18daa0f3468bd3e1ba40c558a3.jpg"
             )
 
             for (imageUrl in imageUrls) {

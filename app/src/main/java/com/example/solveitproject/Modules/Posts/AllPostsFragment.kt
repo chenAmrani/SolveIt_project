@@ -1,5 +1,6 @@
 package com.example.solveitproject.Modules.Posts
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.solveitproject.GoogleMapsApiActivity
 import com.example.solveitproject.Model.StudentModel
 import com.example.solveitproject.Model.StudentPost
+import com.example.solveitproject.Models.PostModel
 import com.example.solveitproject.Models.StudentPostModel
 import com.example.solveitproject.Modules.Posts.PostAdapter.PostsRecyclerAdapter
-import com.example.solveitproject.Modules.Posts.PostViewModel
-import com.example.solveitproject.Modules.Posts.PostsRecyclerViewActivity
 import com.example.solveitproject.R
 import com.example.solveitproject.databinding.FragmentAllpostsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class AllPostsFragment : Fragment() {
-    var PostsRcyclerView: RecyclerView? = null
+    var PostsRecyclerView: RecyclerView? = null
     var adapter: PostsRecyclerAdapter? = null
     var progressBar: ProgressBar? = null
     var myPostsButton: Button? = null
@@ -51,22 +52,19 @@ class AllPostsFragment : Fragment() {
 
         progressBar?.visibility = View.VISIBLE
 
-        viewModel.posts = StudentPostModel.instance.getAllstudentPosts("")
-
-        Log.i("users",viewModel.posts.toString())
+        viewModel.posts = StudentPostModel.instance.getAllstudentPosts( "")
 
 
-
-        PostsRcyclerView = binding.rvAllPostFragmentList
-        PostsRcyclerView?.setHasFixedSize(true)
-        PostsRcyclerView?.layoutManager = LinearLayoutManager(context)
+        PostsRecyclerView = binding.rvAllPostFragmentList
+        PostsRecyclerView?.setHasFixedSize(true)
+        PostsRecyclerView?.layoutManager = LinearLayoutManager(context)
         adapter = PostsRecyclerAdapter((viewModel.posts?.value))
         myPostsButton = binding.btnMyPosts
 
 
         val bottomNavigationView =
             requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
-        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
+        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { it ->
             val studentId = it?.id.toString()
             val studentEmail = it?.email.toString()
             bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -76,7 +74,7 @@ class AllPostsFragment : Fragment() {
                         val action =
                             AllPostsFragmentDirections.actionAllPostsFragmentToProfileFragment(
                                 studentEmail,
-                                studentId,
+                                studentId
                             )
                         Navigation.findNavController(view).navigate(action)
                         true // Return true to indicate that the item has been handled
@@ -91,22 +89,16 @@ class AllPostsFragment : Fragment() {
                 }
             }
 
-        myPostsButton?.setOnClickListener {
-            StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) { student ->
-                val studentEmail = student?.email
-                if (studentEmail != null) {
-                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(studentId!!)
-                    Navigation.findNavController(view).navigate(action)
-                }
-            }
-        }
+
             adapter?.listener = object : PostsRecyclerViewActivity.OnItemClickListener {
 
                 override fun onItemClick(position: Int) {
                     Log.i("TAG", "PostsRecyclerAdapter: Position clicked $position")
                     val post = viewModel.posts?.value?.get(position)
                     post?.let {
-                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToPostSpecificFragment()
+                    val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(
+                        it.postid
+                    )
                     Navigation.findNavController(view).navigate(action)
                     }
                 }
@@ -117,7 +109,7 @@ class AllPostsFragment : Fragment() {
             }
 
 
-            PostsRcyclerView?.adapter = adapter
+            PostsRecyclerView?.adapter = adapter
 
             viewModel.posts?.observe(viewLifecycleOwner) {
                 adapter?.posts = it
@@ -133,14 +125,24 @@ class AllPostsFragment : Fragment() {
             }
 
             val myPostsButton: Button = binding.btnMyPosts
+
             myPostsButton.setOnClickListener {
                 StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
-                    val studentId = it?.id
-                val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentSpecificPostFragment(studentId!!)
-                Navigation.findNavController(view).navigate(action)
+                    val studentEmail = it?.email.toString()
+                    val userId = it?.id.toString()
+                    if (studentEmail != null) {
+                        val action = AllPostsFragmentDirections.actionAllPostsFragmentToStudentPostsFragment(studentEmail,userId)
+                        Navigation.findNavController(view).navigate(action)
+                    }
                 }
             }
-        }
+            val mapButton: Button = binding.btnMaps
+            mapButton.setOnClickListener {
+                    val intent = Intent(requireContext(), GoogleMapsApiActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
             return view
         }
 

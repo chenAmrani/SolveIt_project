@@ -81,7 +81,7 @@ class StudentPostsFragment : Fragment() {
                 val action =
                     StudentPostsFragmentDirections.actionStudentPostsFragmentToProfileFragment(
                         email!!,
-                        ""
+                        studentID
                     )
                 Navigation.findNavController(view).navigate(action)
             }

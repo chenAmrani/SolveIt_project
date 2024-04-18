@@ -49,10 +49,21 @@ class PostsListActivity: AppCompatActivity() {
 
                 view = view ?: convertView
 
-                val publisherTextView: TextView? = view?.findViewById(R.id.publisherTextView)
+                val courseTextView: TextView? = view?.findViewById(R.id.CoureNameLabelTextView)
+                val topicTextView: TextView? = view?.findViewById(R.id.TopicLabelTextView)
+                val additionalTextTextView: TextView? = view?.findViewById(R.id.AdditonalTextLabelTextView)
 
 
-                publisherTextView?.text = post?.publisher
+                courseTextView?.text = post?.curseName
+                topicTextView?.text = post?.topicName
+                additionalTextTextView?.text= post?.additionalText
+//                generalPostIdTextView?.text= post?.postid
+
+
+//                val publisherTextView: TextView? = view?.findViewById(R.id.publisherTextView)
+
+
+//                publisherTextView?.text = post?.publisher
 
 
                 return view!!

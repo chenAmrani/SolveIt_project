@@ -14,4 +14,5 @@
     <string name="uploud_profile_image">Uploud Profile Image</string>
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
+    <string name ="my_map_api_key">AIzaSyC96vW_c6VXNbyYWfFSQJZeRSN54t1dVZY</string>
 </resources>

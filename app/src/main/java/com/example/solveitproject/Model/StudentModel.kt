@@ -31,8 +31,6 @@ import java.util.concurrent.Executors
             }
         }
 
-
-
         fun getStudentByEmail(email: String, callback: (Student?) -> Unit): LiveData<Student> {
             firebaseStudentModel.getStudentByEmail(email) {
                 callback(it)

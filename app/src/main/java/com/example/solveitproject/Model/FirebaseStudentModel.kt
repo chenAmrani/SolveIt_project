@@ -62,7 +62,7 @@ class FirebaseStudentModel {
                         callback(studnet)
                     } else {
                         callback(null)
-                        Log.i("TAG", "Student id: null2")
+                        Log.i("TAG", "Student id: null")
                     }
                 } else {
                     callback(null)
