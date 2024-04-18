@@ -2,6 +2,7 @@ package com.example.solveitproject.Model
 
 import android.util.Log
 import com.google.firebase.Timestamp
+import com.google.firebase.events.Publisher
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 
@@ -10,7 +11,6 @@ class FirebaseStudentPostModel {
 
     companion object {
         const val STUDENTPOST_COLLECTION_PATH = "studentPosts"
-        const val POST_COLLECTION_PATH = "posts"
     }
     val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     init {
@@ -22,8 +22,8 @@ class FirebaseStudentPostModel {
     }
 
 
-    fun getAllStudentPosts(since: Long,publisher: String, callback: (List<StudentPost>) -> Unit){
-        Log.i("getAllStudentPosts", "getAllStudentPosts -publisher ${publisher}")
+    fun getAllStudentPosts(since: Long,postPublisher: String, callback: (List<StudentPost>) -> Unit){
+        Log.i("getAllStudentPosts", "getAllStudentPosts -publisher ${postPublisher}")
         db.collection(STUDENTPOST_COLLECTION_PATH)
             .whereGreaterThanOrEqualTo(StudentPost.LAST_UPDATED, Timestamp(since, 0))
             .get().addOnCompleteListener {

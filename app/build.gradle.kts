@@ -4,7 +4,9 @@ plugins {
     id("androidx.navigation.safeargs")
     id("kotlin-kapt")
     id ("com.google.gms.google-services")
+
 }
+
 
 android {
     namespace = "com.example.solveitproject"
@@ -42,6 +44,10 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation ("com.google.android.gms:play-services-phenotype:17.0.0")
+
+
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-storage-ktx:20.3.0")

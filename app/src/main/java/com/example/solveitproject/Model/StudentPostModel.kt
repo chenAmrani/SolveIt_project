@@ -35,23 +35,21 @@ class StudentPostModel private constructor() {
         fun onComplete(studentPosts: List<StudentPost>)
     }
 
-    fun getAllstudentPosts(publisher: String): LiveData<MutableList<StudentPost>> {
-        refreshAllstudentPosts(publisher)
+    fun getAllstudentPosts(postpublisher: String): LiveData<MutableList<StudentPost>> {
+        refreshAllstudentPosts(postpublisher)
         return studentPosts
     }
 
 
-    fun refreshAllstudentPosts(publisher: String)  {
+    fun refreshAllstudentPosts(postpublisher: String)  {
 
         studentPostsListLoadingState.value = LoadingState.LOADING
 
-        // 1. Get last local update
         val lastUpdated: Long = StudentPost.lastUpdated
 
-        // 2. Get all updated records from firestore since last update locally
-        FirebaseStudentPostModel.getAllStudentPosts(lastUpdated, publisher) { list ->
-            Log.i("TAG", "Firebase Student Post returned ${list.size}, lastUpdated: $lastUpdated")
-            // 3. Insert new record to ROOM
+        FirebaseStudentPostModel.getAllStudentPosts(lastUpdated, postpublisher) { list ->
+            Log.i("TAG", "Firebase returned ${list.size}, lastUpdated: $lastUpdated")
+            //3. insert new record to ROOM
             executor.execute {
                 var time = lastUpdated
                 for (studentPost in list) {
@@ -66,7 +64,6 @@ class StudentPostModel private constructor() {
                     }
                 }
 
-                // 4. Update local data
                 StudentPost.lastUpdated = time
 
                 studentPostsListLoadingState.postValue(LoadingState.LOADED)
@@ -74,9 +71,9 @@ class StudentPostModel private constructor() {
         }
     }
 
-    fun addStudentPost(publisher: String, studentPost: StudentPost, callback: () -> Unit) {
+    fun addStudentPost(postpublisher: String, studentPost: StudentPost, callback: () -> Unit) {
         FirebaseStudentPostModel.addStudentPost(studentPost) {
-            refreshAllstudentPosts(publisher)
+            refreshAllstudentPosts(postpublisher)
             callback()
         }
     }

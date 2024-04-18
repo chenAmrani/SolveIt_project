@@ -25,7 +25,7 @@ class PostModel private constructor() {
     private var executor3 = Executors.newSingleThreadExecutor()
     private var mainHandler = HandlerCompat.createAsync(Looper.getMainLooper())
     private val FirebasePostModel = FirebasePostModel()
-    private val allPosts: LiveData<MutableList<Post>> =database.PostDao().getAll()
+    private val allPosts: LiveData<MutableList<Post>> = database.PostDao().getAll()
     val postsListLoadingState: MutableLiveData<LoadingState> = MutableLiveData(LoadingState.LOADED)
     companion object {
         val instance: PostModel = PostModel()
@@ -41,6 +41,9 @@ class PostModel private constructor() {
     }
 
     fun refreshAllPosts() {
+
+        Log.i("tag", database.toString())
+        Log.i("tag", allPosts.toString())
 
         postsListLoadingState.value = LoadingState.LOADING
 

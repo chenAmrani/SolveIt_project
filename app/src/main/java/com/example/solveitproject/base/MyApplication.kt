@@ -12,7 +12,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Globals.appContext=applicationContext
+        Globals.appContext = applicationContext
     }
 
 }

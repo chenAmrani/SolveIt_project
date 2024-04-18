@@ -84,7 +84,18 @@ class EditProfileFragment : Fragment() {
             recyclerViewImages.layoutManager = GridLayoutManager(requireContext(),4)
 
             val imageUrls = listOf(
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg",
+                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+                "https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg",
+                "https://cdn1.vectorstock.com/i/1000x1000/06/70/brunette-businessman-avatar-man-face-profile-icon-vector-21960670.jpg",
+                "https://static.vecteezy.com/system/resources/previews/019/896/012/original/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png",
+                "https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvRBpwE6j59hC4-ASz6l1piuoNKjzc5MFBVzfRX6xp-g&s",
+                "https://cdn-icons-png.flaticon.com/512/147/147137.png",
+                "https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8pqpC6IgkvdxOH-qCcentLTmv_U4TeAVMPutepRWn9w&s",
+                "https://www.svgrepo.com/show/382104/male-avatar-boy-face-man-user-3.svg",
+                "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMPzJXAxicQcYo0jMFCcFjvjLQJ7PHCrQXz3ErnfBiEg&s"
             )
 
             val adapter = ImageSelectionAdapter(imageUrls) { imageUrl ->
@@ -184,7 +195,18 @@ class EditProfileFragment : Fragment() {
 
         private fun preloadImages() {
             val imageUrls = listOf(
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg",
+                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+                "https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg",
+                "https://cdn1.vectorstock.com/i/1000x1000/06/70/brunette-businessman-avatar-man-face-profile-icon-vector-21960670.jpg",
+                "https://static.vecteezy.com/system/resources/previews/019/896/012/original/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png",
+                "https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvRBpwE6j59hC4-ASz6l1piuoNKjzc5MFBVzfRX6xp-g&s",
+                "https://cdn-icons-png.flaticon.com/512/147/147137.png",
+                "https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8pqpC6IgkvdxOH-qCcentLTmv_U4TeAVMPutepRWn9w&s",
+                "https://www.svgrepo.com/show/382104/male-avatar-boy-face-man-user-3.svg",
+                "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMPzJXAxicQcYo0jMFCcFjvjLQJ7PHCrQXz3ErnfBiEg&s"
             )
             for (imageUrl in imageUrls) {
                 Picasso.get().load(imageUrl).fetch()

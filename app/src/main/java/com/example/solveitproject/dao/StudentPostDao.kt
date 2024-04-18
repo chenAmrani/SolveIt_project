@@ -24,6 +24,9 @@ import com.example.solveitproject.Model.StudentPost
         @Delete
         fun delete(studentpost: StudentPost)
 
+        @Query("DELETE FROM StudentPost")
+        fun deleteAll()
+
         @Query("SELECT * FROM StudentPost WHERE postid =:id")
         fun getStudentPostById(id: String): LiveData<StudentPost>
 

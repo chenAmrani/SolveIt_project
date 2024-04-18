@@ -2,10 +2,12 @@ package com.example.solveitproject.Model
 
 
 import android.content.Context
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.solveitproject.base.MyApplication
-import com.google.protobuf.Timestamp
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
 
 
 @Entity
@@ -68,17 +70,16 @@ import com.google.protobuf.Timestamp
 
         val json: Map<String, Any>
             get() {
-                return hashMapOf<String, Any>(
+                return hashMapOf(
                     id_KEY to postid!!,
                     PUBLISHER_KEY to publisher!!,
                     COURSE_NAME_KEY to course!!,
                     TOPIC_NAME to topic!!,
                     ADDIONAL_TEXT to additionalText!!,
+                    LAST_UPDATED to FieldValue.serverTimestamp(),
                     IMAGE_KEY to image!!
                 )
             }
-
-
     }
 
 

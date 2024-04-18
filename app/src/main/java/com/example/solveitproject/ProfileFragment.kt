@@ -53,6 +53,7 @@ class ProfileFragment : Fragment() {
         viewModel.student= StudentModel.instance.getStudentByEmail(email) { student ->
             if (student != null) {
                 view.findViewById<TextView>(R.id.nameTextView).text = "Name: ${student.name}"
+
                 view.findViewById<TextView>(R.id.emailTextView).text = "Email: ${student.email}"
                 userId = student.id
 
@@ -103,9 +104,26 @@ class ProfileFragment : Fragment() {
                     R.id.addPostFragment -> {
                         // Navigate to the add post fragment
                         val action =
-                            AllPostsFragmentDirections.actionAllPostsFragmentToAddStudentPostFragment(
+                            PostSpecificFragmentDirections.actionPostSpecificFragmentToAddStudentPostFragment(
                                 studentEmail
                             )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+                    R.id.profileFragment -> {
+                        // Navigate to the add post fragment
+                        val action =
+                            PostSpecificFragmentDirections.actionPostSpecificFragmentToProfileFragment(
+                                studentEmail,
+                                studentId
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+                    R.id.allPostsFragment -> {
+                        // Navigate to the add post fragment
+                        val action =
+                            PostSpecificFragmentDirections.actionPostSpecificFragmentToAllPostsFragment()
                         Navigation.findNavController(view).navigate(action)
                         true
                     }

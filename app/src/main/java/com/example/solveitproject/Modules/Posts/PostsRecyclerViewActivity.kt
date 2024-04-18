@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Modules.Posts.PostAdapter.PostsRecyclerAdapter
+import com.example.solveitproject.R
 import com.example.solveitproject.databinding.ActivityPostRecyclerViewBinding
 
 
@@ -14,7 +15,7 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
 
 
 
-    var PostsRcyclerView: RecyclerView? = null
+    var PostsRecyclerView: RecyclerView? = null
     var posts: List<StudentPost>? = null
     var adapter: PostsRecyclerAdapter? = null
 
@@ -29,15 +30,18 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
 
 
 
-        PostsRcyclerView = binding.rvGeneralPostRecyclerList
-        PostsRcyclerView?.setHasFixedSize(true)
-        PostsRcyclerView?.layoutManager = LinearLayoutManager(this)
+        PostsRecyclerView = binding.rvPostRecyclerList
+        PostsRecyclerView?.setHasFixedSize(true)
+        PostsRecyclerView?.layoutManager = LinearLayoutManager(this)
+        val recyclerView: RecyclerView = findViewById(R.id.rvPostRecyclerList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = PostsRecyclerAdapter(posts)
         adapter?.listener = object : OnItemClickListener {
 
             override fun onItemClick(position: Int) {
                 Log.i("TAG", "PostsRecyclerAdapter: Position clicked $position")
+                recyclerView.smoothScrollToPosition(position)
             }
 
             override fun onPostClicked(studentpost: StudentPost?) {
@@ -46,11 +50,11 @@ class PostsRecyclerViewActivity : AppCompatActivity() {
             }
         }
 
-        PostsRcyclerView?.adapter = adapter
+        PostsRecyclerView?.adapter = adapter
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int) // General Post
+        fun onItemClick(position: Int)
         fun onPostClicked(studentpost: StudentPost?)
     }
 
