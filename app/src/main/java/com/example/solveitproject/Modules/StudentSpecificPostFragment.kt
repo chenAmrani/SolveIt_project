@@ -82,7 +82,7 @@ class StudentSpecificPostFragment : Fragment() {
                     }
                 }
             } else {
-                val editButton: Button = view.findViewById(R.id.buttonDelete)
+                val editButton: Button = view.findViewById(R.id.buttonEdit)
                 editButton.visibility = View.GONE
                 val deleteButton: Button = view.findViewById(R.id.buttonDelete)
                 deleteButton.visibility = View.GONE

@@ -44,7 +44,7 @@
         android:id="@+id/btnSelectImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#5CC5F5"
         android:text="Upload Image" />
 
     <ScrollView
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:backgroundTint="#03A9F4"
+            android:backgroundTint="#5CC5F5"
             android:text="Save" />
 
         <Button
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:backgroundTint="#03A9F4"
+            android:backgroundTint="#5CC5F5"
             android:text="Delete Post" />
 
         <Button
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:backgroundTint="#03A9F4"
+            android:backgroundTint="#5CC5F5"
             android:text="Cancel" />
     </LinearLayout>
 </LinearLayout>
