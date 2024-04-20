@@ -22,7 +22,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.StudentModel
 import com.example.solveitproject.Model.StudentPost
 import com.example.solveitproject.Models.StudentPostModel
+import com.example.solveitproject.Modules.StudentSpecificPostFragmentDirections
+import com.example.solveitproject.ProfileFragmentDirections
 import com.example.solveitproject.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import java.util.UUID
@@ -64,6 +67,36 @@ class addStudentPostFragment : Fragment() {
         btnUploadImage = view.findViewById(R.id.btnUploadImage)
         imageView = view.findViewById(R.id.imageView)
 
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
+        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
+            val studentId = it?.id.toString()
+            val studentEmail = it?.email.toString()
+            bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.allPostsFragment -> {
+                        // Navigate to the user allPosts fragment
+                        val action =
+                            addStudentPostFragmentDirections.actionAddStudentPostFragmentToAllPostsFragment()
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    R.id.profileFragment -> {
+                        // Navigate to profile
+                        val action =
+                            addStudentPostFragmentDirections.actionAddStudentPostFragmentToProfileFragment(
+                                studentEmail,
+                                studentId
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
         btnUploadImage.setOnClickListener {
             val dialogView = layoutInflater.inflate(R.layout.dialog_image_selection, null)
             val recyclerViewImages: RecyclerView = dialogView.findViewById(R.id.recyclerViewImages)

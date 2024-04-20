@@ -54,10 +54,7 @@ class LogInFragment : Fragment() {
                 Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            // Login user
             loginUser(email, password)
-
         }
         return view
     }
@@ -78,7 +75,6 @@ class LogInFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Login successful
                     saveLoginCredentials(email, password)
                     navigateToAllPosts()
                     (requireActivity() as MainActivity).setBottomBarVisibility(true)
@@ -105,18 +101,13 @@ class LogInFragment : Fragment() {
     }
 
 
-
-
     private fun saveLoginCredentials(email: String, password: String) {
         val editor = sharedPreferences.edit()
         editor.putString("email", email)
         editor.putString("password", password)
         editor.apply()
     }
-
-
-
-    }
+}
 
 
 

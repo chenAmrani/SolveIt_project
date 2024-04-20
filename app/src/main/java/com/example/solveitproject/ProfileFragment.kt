@@ -104,26 +104,9 @@ class ProfileFragment : Fragment() {
                     R.id.addPostFragment -> {
                         // Navigate to the add post fragment
                         val action =
-                            PostSpecificFragmentDirections.actionPostSpecificFragmentToAddStudentPostFragment(
+                            ProfileFragmentDirections.actionProfileFragmentToAddStudentPostFragment(
                                 studentEmail
                             )
-                        Navigation.findNavController(view).navigate(action)
-                        true
-                    }
-                    R.id.profileFragment -> {
-                        // Navigate to the add post fragment
-                        val action =
-                            PostSpecificFragmentDirections.actionPostSpecificFragmentToProfileFragment(
-                                studentEmail,
-                                studentId
-                            )
-                        Navigation.findNavController(view).navigate(action)
-                        true
-                    }
-                    R.id.allPostsFragment -> {
-                        // Navigate to the add post fragment
-                        val action =
-                            PostSpecificFragmentDirections.actionPostSpecificFragmentToAllPostsFragment()
                         Navigation.findNavController(view).navigate(action)
                         true
                     }

@@ -139,7 +139,7 @@ class EditPostFragment : Fragment() {
                     }
 
                     R.id.profileFragment -> {
-                        // Navigate to the add post fragment
+                        // Navigate to profile
                         val action =
                             EditPostFragmentDirections.actionEditPostFragmentToProfileFragment(
                                 studentEmail,
@@ -148,15 +148,6 @@ class EditPostFragment : Fragment() {
                         Navigation.findNavController(view).navigate(action)
                         true
                     }
-
-                    R.id.allPostsFragment -> {
-                        // Navigate to the add post fragment
-                        val action =
-                            EditPostFragmentDirections.actionEditPostFragmentToAllPostsFragment()
-                        Navigation.findNavController(view).navigate(action)
-                        true
-                    }
-
                     else -> false
                 }
             }

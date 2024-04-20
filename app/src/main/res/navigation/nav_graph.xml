@@ -67,6 +67,9 @@
         <action
             android:id="@+id/action_addStudentPostFragment_to_AllPostsFragment"
             app:destination="@id/allPostsFragment" />
+        <action
+            android:id="@+id/action_addStudentPostFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -91,6 +94,9 @@
         <action
             android:id="@+id/action_profileFragment_to_studentPostsFragment"
             app:destination="@id/studentPostsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_addStudentPostFragment"
+            app:destination="@id/addStudentPostFragment" />
     </fragment>
 
 
