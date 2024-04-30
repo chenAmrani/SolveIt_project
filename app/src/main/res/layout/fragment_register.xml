@@ -76,6 +76,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="28dp"
+        android:backgroundTint="#5CC5F5"
         android:text="@string/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BtnRegisterCancel"
@@ -88,6 +89,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginEnd="168dp"
         android:text="@string/cancel"
+        android:backgroundTint="#5CC5F5"
         app:layout_constraintBaseline_toBaselineOf="@+id/BtnRegisterDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/BtnRegisterDone" />
@@ -197,6 +199,7 @@
         android:layout_width="97dp"
         android:layout_height="38dp"
         android:text="Upload"
+        android:backgroundTint="#5CC5F5"
         app:layout_constraintBottom_toTopOf="@+id/BtnRegisterCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.554"

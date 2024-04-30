@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BEDAF4"
+    android:background="@color/white"
     tools:context=".PostSpecificFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="78dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="78dp"
         android:orientation="vertical"
         android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
 
         <LinearLayout
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#03A9F4"
+            android:backgroundTint="#5CC5F5"
             android:text="Edit Post"
             android:textSize="16sp" />
 
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#03A9F4"
+            android:backgroundTint="#5CC5F5"
             android:text="Delete Post"
             android:textSize="16sp" />
     </LinearLayout>

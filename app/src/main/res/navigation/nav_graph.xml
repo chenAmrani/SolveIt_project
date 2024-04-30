@@ -162,6 +162,12 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_addStudentPostFragment"
+            app:destination="@id/addStudentPostFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
     </fragment>
 
     <fragment
