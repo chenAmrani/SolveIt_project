@@ -23,7 +23,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.solveitproject.Model.Student
 import com.example.solveitproject.Model.StudentModel
+import com.example.solveitproject.Modules.EditPostFragmentDirections
 import com.example.solveitproject.Modules.addStudentPost.ImageSelectionAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 
@@ -148,6 +150,49 @@ class EditProfileFragment : Fragment() {
         buttonCancel?.setOnClickListener {
             val action = EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(email,studentId)
             Navigation.findNavController(view).navigate(action)
+        }
+
+
+
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.mainActivityBottomNavigationView)
+        StudentModel.instance.getStudent(FirebaseAuth.getInstance().currentUser?.uid!!) {
+            val studentId = it?.id.toString()
+            val studentEmail = it?.email.toString()
+            bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.allPostsFragment -> {
+                        // Navigate to the user allPosts fragment
+                        val action =
+                            EditProfileFragmentDirections.actionEditProfileFragmentToAllPostsFragment()
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    R.id.addPostFragment -> {
+                        // Navigate to the add post fragment
+                        val action =
+                            EditProfileFragmentDirections.actionEditProfileFragmentToAddStudentPostFragment(
+                                studentEmail
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    R.id.profileFragment -> {
+                        // Navigate to profile
+                        val action =
+                            EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment(
+                                studentEmail,
+                                studentId
+                            )
+                        Navigation.findNavController(view).navigate(action)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
         }
     }
 
